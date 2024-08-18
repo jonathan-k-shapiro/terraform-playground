@@ -1,4 +1,4 @@
-# Terraform with multiple environments example
+# Terraform Playground
 
 This repo is a sample Terraform project that sets up the following:
 * A VPC in AWS
