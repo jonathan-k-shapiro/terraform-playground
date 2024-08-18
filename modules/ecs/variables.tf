@@ -20,16 +20,6 @@ variable alb_port {
   default     = 80
 }
 
-variable ecr_repo_url {
-  description = "The URL of the ECR repository"
-  type        = string
-}
-
-variable image_tag {
-  description = "The tag of the Docker image to deploy"
-  type        = string
-}
-
 variable vpc_id {
   description = "The ID of the VPC to deploy into"
   type        = string
@@ -59,6 +49,11 @@ variable fargate_memory {
 
 variable app_image {
   description = "The Docker image to deploy"
+  type        = string
+}
+
+variable app_image_tag {
+  description = "The tag of the Docker image to deploy"
   type        = string
 }
 

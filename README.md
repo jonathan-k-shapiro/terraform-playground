@@ -17,6 +17,31 @@ I also created two modules that do appear in in the repo under `modules`:
 * `tf-docker` For bulding and pushing a docker image to ECR. Note that this module includes a Git submodule to my fork of [Go Kit Examples](https://github.com/jonathan-k-shapiro/go-kit-examples/tree/3b8f291d2b369eb0ccd867d85ab9c7b10e38b1b3). My fork just adds a `Dockerfile` to build the `profilesvc` example as an image.
 * `ecs` for building the ECS service and its associated infrastructure.
 
+## Running Terraform
+
+There's a few ways to do it. But here's how I'm doing it from my laptop.
+
+In my personal AWS account, I have an organization set up with just that one account belonging to it. I use IAM Identity Center as an identity source and avoid having any long-lived credentials. But that means I need to get Terraform to run under a role I assume. My current way to do this is using [`aws-vault`](https://github.com/99designs/aws-vault) which forces me to log in via SSO and then creates a sub-shell with temporary credentials which have permissions to do what Terraform needs to do.
+
+So, for example:
+```
+cd environments/development
+aws-vault exec <username> --  terraform init
+aws-vault exec <username> --  terraform plan -out development.tfplan
+aws-vault exec <username> --  terraform apply development.tfplan
+```
+
+You can also execute `aws-vault exec <username>` on a line by itself to get dropped into a subshell that just lets you run the un-decorated terraform commands
+
+```
+cd environments/development
+aws-vault exec <username>
+# Now in a subshell
+terraform init
+terraform plan -out development.tfplan
+terraform apply development.tfplan
+```
+
 ## How to test it
 As of this writing, the profile service is running in my account. (I will tear it down at some point soon so the URLs below are not guaranteed to work indefinitely).
 
