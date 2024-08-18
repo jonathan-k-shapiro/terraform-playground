@@ -1,5 +1,19 @@
 # Terraform with multiple environments example
 
+Create a Profile:
+
+```bash
+$ curl -d '{"id":"1234","Name":"Go Kit"}' -H "Content-Type: application/json" -X POST http://profilesvc-load-balancer-1585549468.us-west-2.elb.amazonaws.com:8080/profiles/
+{}
+```
+
+Get the profile you just created
+
+```bash
+$ curl profilesvc-load-balancer-1585549468.us-west-2.elb.amazonaws.com:8080/profiles/1234
+{"profile":{"id":"1234","name":"Go Kit"}}
+```
+
 ## References:
 
 [How to build and push a docker image to ECR with terraform](https://anthony-f-tannous.medium.com/how-to-build-and-push-a-docker-image-to-ecr-with-terraform-38f0083314e9)
