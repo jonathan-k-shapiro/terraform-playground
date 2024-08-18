@@ -21,7 +21,7 @@ I also created two modules that do appear in in the repo under `modules`:
 
 There's a few ways to do it. But here's how I'm doing it from my laptop.
 
-In my personal AWS account, I have an organization set up with just that one account belonging to it. I use IAM Identity Center as an identity source and avoid having any long-lived credentials. But that means I need to get Terraform to run under a role I assume. My current way to do this is using `aws-vault` which forces me to log in via SSO and then creates a sub-shell with temporary credentials which have permissions to do what Terraform needs to do.
+In my personal AWS account, I have an organization set up with just that one account belonging to it. I use IAM Identity Center as an identity source and avoid having any long-lived credentials. But that means I need to get Terraform to run under a role I assume. My current way to do this is using [`aws-vault`](https://github.com/99designs/aws-vault) which forces me to log in via SSO and then creates a sub-shell with temporary credentials which have permissions to do what Terraform needs to do.
 
 So, for example:
 ```
