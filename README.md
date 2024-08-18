@@ -13,10 +13,12 @@ Based on an example in [this article][1] I set up the project to support multipl
 
 I used two pre-existing modules from the Hashicorp Terraform Registry for creating a [VPC](https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws/latest) and an [ECR repository](https://registry.terraform.io/modules/terraform-aws-modules/ecr/aws/latest). These two modules are pulled directly from the registry and don't appear in my repo. 
 
-I also created two modules that do appear in in the repo under `modules`: One for bulding and pushing a docker image to ECR and another for the ECS service and associated infrastructure.
+I also created two modules that do appear in in the repo under `modules`: 
+* `tf-docker` For bulding and pushing a docker image to ECR. Note that this module includes a Git submodule to my fork of [Go Kit Examples](https://github.com/jonathan-k-shapiro/go-kit-examples/tree/3b8f291d2b369eb0ccd867d85ab9c7b10e38b1b3). My fork just adds a `Dockerfile` to build the `profilesvc` example as an image.
+* `ecs` for building the ECS service and its associated infrastructure.
 
 ## How to test it
-As of this writing, the profile service is running in my account. (Although, I will tear it down at some point soon so the URLs below are not guaranteed to work indefinitely).
+As of this writing, the profile service is running in my account. (I will tear it down at some point soon so the URLs below are not guaranteed to work indefinitely).
 
 Create a Profile:
 
@@ -36,10 +38,10 @@ $ curl profilesvc-load-balancer-1585549468.us-west-2.elb.amazonaws.com:8080/prof
 
 I've relied on several [really][1] [nice][2] [examples][4] I [found][3] on the Web.
 
-* [1]: https://medium.com/@b0ld8/terraform-manage-multiple-environments-63939f41c454 "Setting up Terraform to manage multiple environments"
-* [2]: https://anthony-f-tannous.medium.com/how-to-build-and-push-a-docker-image-to-ecr-with-terraform-38f0083314e9 "How to build and push a docker image to ECR with terraform"
-* [3]: https://medium.com/@olayinkasamuel44/using-terraform-and-fargate-to-create-amazons-ecs-e3308c1b9166 "Using Terraform and Fargate to create Amazon's ECS"
-* [4]: https://gokit.io/examples "Go Kit examples"
+[1]: https://medium.com/@b0ld8/terraform-manage-multiple-environments-63939f41c454 "Setting up Terraform to manage multiple environments"
+[2]: https://anthony-f-tannous.medium.com/how-to-build-and-push-a-docker-image-to-ecr-with-terraform-38f0083314e9 "How to build and push a docker image to ECR with terraform"
+[3]: https://medium.com/@olayinkasamuel44/using-terraform-and-fargate-to-create-amazons-ecs-e3308c1b9166 "Using Terraform and Fargate to create Amazon's ECS"
+[4]: https://gokit.io/examples "Go Kit examples"
 
 ## Notes:
 
