@@ -9,7 +9,7 @@ data "template_file" "cb_app" {
     template = file("${path.module}/templates/profilesvc.json.tpl")
 
     vars = {
-        app_image      = var.app_image
+        app_image      = "${var.app_image}:${var.app_image_tag}"
         app_port       = var.app_port
         fargate_cpu    = var.fargate_cpu
         fargate_memory = var.fargate_memory

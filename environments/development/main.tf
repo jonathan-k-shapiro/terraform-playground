@@ -91,14 +91,12 @@ module "ecs" {
   alb_port = 80
   app_port = 8080
 
-  ecr_repo_url = module.ecr.repository_url
-  image_tag    = "latest"
-
   vpc_id = module.vpc.vpc_id
   public_subnets = module.vpc.public_subnets
   private_subnets = module.vpc.private_subnets
 
-  app_image = "${module.ecr.repository_url}:latest"
+  app_image = "${module.ecr.repository_url}"
+  app_image_tag = "latest"
 }
 
 output "alb_hostname" {
