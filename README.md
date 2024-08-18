@@ -11,6 +11,10 @@ Based on an example in [this article][1] I set up the project to support multipl
 * that there are no naming collisions if muliple environments deploy to the same AWS account.
 * that it's straightforward to deploy to environments in multiple accounts. (That would be my prefrence in a real deployment, but I only have one personal AWS account, so...)
 
+I used two pre-existing modules from the Hashicorp Terraform Registry for creating a [VPC](https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws/latest) and an [ECR repository](https://registry.terraform.io/modules/terraform-aws-modules/ecr/aws/latest). These two modules are pulled directly from the registry and don't appear in my repo. 
+
+I also created two modules that do appear in in the repo under `modules`: One for bulding and pushing a docker image to ECR and another for the ECS service and associated infrastructure.
+
 ## How to test it
 As of this writing, the profile service is running in my account. (Although, I will tear it down at some point soon so the URLs below are not guaranteed to work indefinitely).
 
