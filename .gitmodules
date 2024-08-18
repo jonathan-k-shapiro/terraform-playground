@@ -1,0 +1,4 @@
+[submodule "modules/tf-docker/go-kit-examples"]
+	path = modules/tf-docker/go-kit-examples
+	url = https://github.com/jonathan-k-shapiro/go-kit-examples.git
+	branch = dockerfile
