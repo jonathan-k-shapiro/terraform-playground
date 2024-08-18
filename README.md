@@ -2,7 +2,7 @@
 
 This repo is a sample Terraform project that sets up the following:
 * A VPC in AWS
-* A docker image in ECS for a simple profile service (using one of the example services from Go Kit). Terraform is responsible for both building the docker image and pushing it to ECR
+* A docker image for a simple profile service (using one of the example services from Go Kit). Terraform is responsible for both building the docker image and pushing it to ECR
 * An ECS service to run the profile service in Fargate (under the created VPC) behind an application load balancer
 
 ## Project set up
